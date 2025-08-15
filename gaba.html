@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Gabba Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7f7f7; color: #333; }
+    header { background: #111; color: white; padding: 1em 2em; text-align: center; }
+    nav { margin-top: 0.5em; }
+    nav a { color: white; margin: 0 1em; text-decoration: none; font-weight: 500; }
+    nav a:hover { color: #ff9800; }
+    .container { max-width: 1200px; margin: auto; padding: 1em; }
+    .productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5em; margin-top: 2em; }
+    .producto { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease; }
+    .producto:hover { transform: translateY(-5px); }
+    .producto img { width: 100%; height: 250px; object-fit: cover; }
+    .producto-info { padding: 1em; text-align: center; }
+    .producto-info h3 { margin-bottom: 0.5em; font-size: 1.2em; color: #222; }
+    .producto-info p { color: #777; font-size: 0.95em; margin-bottom: 0.8em; }
+    .precio { font-size: 1.1em; font-weight: bold; color: #ff9800; margin-bottom: 1em; }
+    .boton { background: #111; color: white; padding: 0.5em 1.2em; border: none; cursor: pointer; border-radius: 5px; transition: background 0.3s ease; }
+    .boton:hover { background: #ff9800; }
+    footer { text-align: center; padding: 2em 0; background: #111; color: white; margin-top: 2em; }
+
+    /* Estilos para el modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-content {
+        background: white;
+        padding: 2em;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        position: relative;
+    }
+    .modal-content img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 1em;
+    }
+    .close {
+        position: absolute;
+        top: 10px; right: 15px;
+        font-size: 1.5em;
+        color: #555;
+        cursor: pointer;
+    }
+    .close:hover { color: red; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Gabba Store</h1>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Hombres</a>
+        <a href="#">Mujeres</a>
+        <a href="#">Niños</a>
+        <a href="#">Contacto</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Productos Destacados</h2>
+    <div class="productos">
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x250" alt="Licra deportiva">
+            <div class="producto-info">
+                <h3>Licra Deportiva</h3>
+                <p>Licra moldeadora de mujer en varios colores.</p>
+                <div class="precio">$40.000</div>
+                <button class="boton" onclick="abrirModal('Licra Deportiva', 'Licra moldeadora de mujer, perfecta para entrenar y usar en el día a día.', 'https://via.placeholder.com/500x400')">Ver más</button>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x250" alt="Vestido elegante">
+            <div class="producto-info">
+                <h3>Vestido Elegante</h3>
+                <p>Perfecto para eventos especiales.</p>
+                <div class="precio">$80.000</div>
+                <button class="boton" onclick="abrirModal('Vestido Elegante', 'Vestido elegante con tela premium y corte moderno.', 'https://via.placeholder.com/500x400')">Ver más</button>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x250" alt="Sudadera deportiva">
+            <div class="producto-info">
+                <h3>Sudadera Deportiva</h3>
+                <p>Comodidad y estilo para el día a día.</p>
+                <div class="precio">$18.000</div>
+                <button class="boton" onclick="abrirModal('Sudadera Deportiva', 'Sudadera ligera y transpirable para todo momento.', 'https://via.placeholder.com/500x400')">Ver más</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="miModal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h3 id="modalTitulo"></h3>
+        <img id="modalImagen" src="" alt="">
+        <p id="modalDescripcion"></p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2024 Gabba Store. Todos los derechos reservados.
+</footer>
+
+<script>
+    function abrirModal(titulo, descripcion, imagen) {
+        document.getElementById('modalTitulo').textContent = titulo;
+        document.getElementById('modalDescripcion').textContent = descripcion;
+        document.getElementById('modalImagen').src = imagen;
+        document.getElementById('miModal').style.display = 'flex';
+    }
+    function cerrarModal() {
+        document.getElementById('miModal').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
